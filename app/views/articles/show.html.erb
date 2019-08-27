@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<h2>
+  <%= @article.title %>
+</h2>
+
+<p>
+  <strong>Description:</strong>
+  <%= @article.description %>
+</p>
+
+<h5><span class="label label-danger"><%= @article.category.name %></span></h5><br>
+  <%= image_tag @article.image, style:"width:30%" %>
+<br>
+
+<% if @article.user == current_user %>
+<%= link_to 'Edit', edit_article_path(@article), class:"btn btn-primary" %>
+<% end %>

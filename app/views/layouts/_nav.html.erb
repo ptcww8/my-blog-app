@@ -1,0 +1,41 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Titus Blog</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="<%= root_path%>">Home</a></li>
+        <li><a href="<%= new_article_path%>">Add Article</a></li>
+				<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Categories
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<% Category.all.each do |category| %>
+					<a class="dropdown-item" href="#"><%= category.name%></a>
+					
+					<% end %>
+        </div>
+      </li>
+        <li><a href="<%= new_subscriber_path%>">Subscribe</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+			<% if user_signed_in? %>
+				<li><a href="#">Logged in as <strong><%= current_user.email %></a></strong></li>
+				<li> <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> </li>
+				<li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %> </li>
+			<% else %>
+				<li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> </li>
+				<li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %> </li>
+			<% end %>
+
+      </ul>
+    </div>
+  </div>
+</nav>

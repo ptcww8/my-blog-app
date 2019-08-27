@@ -1,0 +1,63 @@
+<h4><small>RECENT POSTS</small></h4>
+      <hr>
+<div class="container-fluid text-left">
+  <div class="row content">
+		<div class="col-sm-9">
+			<% @articles.each do |article| %>
+			<div class="col-sm-3"> <a href="<%= article_path(article.id) %>"><%= image_tag article.image, style:"width:100%" %></a></div>
+			<div class="col-sm-9">
+				<br>
+			
+      <a href="<%= article_path(article.id) %>"><h2><%= article.title %></h2></a>
+      <h5><span class="glyphicon glyphicon-time"></span> Post by <%= article.user.email %>, <%= article.created_at %>.</h5>
+      <h5><span class="label label-danger"><%= article.category.name %></span></h5><br>
+			
+      <p class="card mb-3 shadow-lg p-3 mb-5 bg-white rounded"><%= article.description %>.</p>
+			<% if article.user == current_user %>
+			<%= link_to 'Edit', edit_article_path(article), class:"btn btn-primary" %>
+			<%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+			<% end %>
+			</div>
+
+		
+      <% end %>
+			
+			
+		</div>
+    <div class="col-sm-3 sidenav">
+		</div>
+
+	</div>
+</div>
+
+
+
+
+
+<!--<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Category</th>
+      <th>User</th>
+      <th>Image</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= article.title %></td>
+        <td><%= article.description %></td>
+        <td><%= article.category_id %></td>
+        <td><%= article.user_id %></td>
+        <td><%= image_tag article.image %></td>
+        <td><%= link_to 'Show', article %></td>
+        <td><%= link_to 'Edit', edit_article_path(article) %></td>
+        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table> -->
