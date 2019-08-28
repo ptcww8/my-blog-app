@@ -11,6 +11,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
+		@comment = current_user.comments.build if current_user
   end
 
   # GET /articles/new

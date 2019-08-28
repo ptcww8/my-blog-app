@@ -6,22 +6,23 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Titus Blog</a>
+      <a class="navbar-brand" href="<%= root_path%>">Titus Blog</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="<%= root_path%>">Home</a></li>
+        <li><a href="<%= root_path%>">Home</a></li>
         <li><a href="<%= new_article_path%>">Add Article</a></li>
-				<li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Categories
+				<li class="dropdown">
+        <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Categories <span class="caret"></span>
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 					<% Category.all.each do |category| %>
-					<a class="dropdown-item" href="#"><%= category.name%></a>
+					<li><a href="<%= category_path(category.id)%>"><%= category.name%></a></li>
+
 					
 					<% end %>
-        </div>
+        </ul>
       </li>
         <li><a href="<%= new_subscriber_path%>">Subscribe</a></li>
       </ul>
