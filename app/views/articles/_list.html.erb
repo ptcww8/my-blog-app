@@ -2,16 +2,16 @@
       <hr>
 <div class="container-fluid text-left">
   <div class="row content">
-		<div class="col-sm-9">
+		<div class="col-md-12">
 			<% particles.each do |article| %>
-			<div class="col-sm-3"> <a href="<%= article_path(article.id) %>">
+			<div class="col-md-3"> <a href="<%= article_path(article.id) %>">
 				<% if article.image.attached? %>
 				<%= image_tag article.image , style:"width:100%" %>
 				<% else %>
 				<%= image_tag "https://picsum.photos/280/280" , style:"width:100%" %>
 				<% end %>
 				</a></div>
-			<div class="col-sm-7">
+			<div class="col-md-9">
 				<br>
 			
       <a href="<%= article_path(article.id) %>"><h2><%= article.title %></h2></a>
@@ -30,8 +30,8 @@
 			
 			
 		</div>
-    <div class="col-sm-3 sidenav">
-		</div>
+    <!--<div class="col-sm-3 sidenav">
+		</div> -->
 
 	</div>
 </div>

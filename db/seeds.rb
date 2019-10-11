@@ -18,7 +18,7 @@ cat_ids = Category.pluck(:id)
 user_ids = User.pluck(:id)
 
 20.times do
-  article = Article.create(title: Faker::Lorem.words.join(" "), description: Faker::Lorem.paragraphs(number: 5).join(". "), category_id: cat_ids.sample, user_id: user_ids.sample)
+  article = Article.create(title: Faker::Lorem.words.join(" "), description: Faker::Lorem.paragraphs(number: 20).join(". "), category_id: cat_ids.sample, user_id: user_ids.sample)
 	file = URI.open('https://picsum.photos/280/280')
 	article.image.attach(io: file, filename: "#{Faker::Lorem.word}.jpg")
 end
